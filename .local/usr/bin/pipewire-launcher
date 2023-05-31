@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pkill -x pipewire\|wireplumber 1> /dev/null 2>&1
+
+/usr/bin/pipweire -c $XDG_CONFIG_DIR/pipewire/pipewire.conf &
+
+sleep 1
+
+# put execution of session manager here
+
