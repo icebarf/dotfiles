@@ -2,17 +2,22 @@
   :init
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (package-initialize)
+
   :config
   ;; window styling
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tab-bar-mode 1)
+
+  (add-to-list 'default-frame-alist '(font . "Comic Mono-13"))
+  (set-frame-font "Comic Mono-13" nil t)
+  
   ;; electric pair mode inserts pairs of all bracket-like characters
   (electric-pair-mode 1)
+
   ;; Backup Management
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups/")))))
-
 
 ;; use package
 (use-package use-package
@@ -65,28 +70,94 @@
   ;; disable control and meta key stuff
   (setq xah-fly-use-control-key nil)
   (setq xah-fly-use-meta-key nil)
+  
+  :bind-keymap
+  ("<f7>" . xah-fly-leader-key-map)
 
-  ;; enable xah-fly-keys command mode by default if running in server/daemon mode
+  :bind
+  (:map xah-fly-command-map
+	("SPC w k" . kill-buffer))
+  (:map xah-fly-command-map
+	("SPC w n" . tab-new))
+  (:map xah-fly-command-map
+	("SPC w c" . tab-close))
+
+  ;; enable xah-fly-keys command mode by default
   :if (daemonp)
   :config
-  (defun my/server-fix-up()
+  (defun my/xah-fly-activate()
     (xah-fly-keys-set-layout "qwerty")
     (xah-fly-keys t))
   :hook
-  (server-after-make-frame . my/server-fix-up))
+  (server-after-make-frame . my/xah-fly-activate))
 
-;; smex stuff
+
 (use-package smex
-  :ensure t
   :bind
   ([remap execute-extended-command] . 'smex))
+
+(use-package multiple-cursors
+  :bind
+  ("C-S-c C-S-c" . 'mc/edit-lines)
+  ("C->" . 'mc/mark-next-like-this)
+  ("C-<" . 'mc/mark-previous-like-this)
+  ("C-c C-<" . 'mc/mark-all-like-this))
+
+(use-package company
+  :config
+  (company-mode nil)
+  :hook
+  (after-init-hook . global-company-mode)
+  :if (daemonp)
+  :hook (server-after-make-frame . global-company-mode))
+
+(use-package flycheck
+  :config
+  (global-flycheck-mode))
+
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  :bind
+  (:map projectile-mode-map
+	("C-c p" . projectile-command-map))
+  :if (daemonp)
+  :hook
+  (server-after-make-frame . projectile-mode))
+
+(use-package which-key
+  :config
+  (which-key-mode)
+  :if (daemonp)
+  :hook
+  (server-after-make-frame . which-key-mode))
+
+(use-package treemacs)
+
+(use-package lsp-treemacs
+  :after treemacs)
+
+(use-package lsp-mode
+  :after lsp-treemacs
+  :hook
+  (c-mode . lsp)
+  (c++-mode . lsp)
+  (lsp-mode . lsp-which-key-integration))
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(clang-format xah-fly-keys smex doom-themes)))
+ '(package-selected-packages
+   '(clang-format+ projectile lsp-treemacs treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

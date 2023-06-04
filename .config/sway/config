@@ -23,7 +23,7 @@ set $menu bemenu-run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ice/Pictures/Wallpapers/dry_leaves_bench_in_forest.jpg fill
+output * bg /home/ice/Pictures/Wallpapers/forest_road.jpg fit
 
 #
 # Example configuration:

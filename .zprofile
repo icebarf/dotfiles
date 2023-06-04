@@ -10,6 +10,8 @@ KISS_PATH="$KISS_PATH:$REPODIR/grepo/extra"
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/wayland"
 KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 
+source /etc/profile
+
 export KISS_SU="doas"
 
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
@@ -47,6 +49,6 @@ doas turn_off_gpu
 
 pipewire -c $XDG_CONFIG_HOME/pipewire/pipewire.conf &
 /usr/bin/emacs --daemon &
-exec sway &
+exec sway --debug 2>&1 | tee sway.log
 
 
