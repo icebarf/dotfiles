@@ -20,10 +20,17 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu bemenu-run | xargs swaymsg exec --
 
+# take screenshot of a reagion
+set $ss_region /home/ice/.local/usr/bin/ss_region
+# take screenshot of active window
+set $ss_window /home/ice/.local/usr/bin/ss_window
+#take screenshot full screen
+set $ss_full /home/ice/.local/usr/bin/ss_full
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ice/Pictures/Wallpapers/forest_road.jpg fit
+output * bg /home/ice/Pictures/Wallpapers/body_of_water_near_mountains.jpg stretch
 
 #
 # Example configuration:
@@ -66,6 +73,12 @@ input "type:keyboard" {
         xkb_options caps:swapescape
 }
 
+input "type:touchpad" {
+			tap enabled
+			natural_scroll enabled
+}
+
+
 ### Key bindings
 #
 # Basics:
@@ -91,6 +104,15 @@ input "type:keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Screenshots
+#
+
+		bindsym $mod+Shift+s exec $ss_region
+		bindsym $mod+Print exec $ss_window
+		bindsym Print exec $ss_full
+
 #
 # Moving around:
 #

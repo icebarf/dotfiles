@@ -16,6 +16,16 @@
   ;; electric pair mode inserts pairs of all bracket-like characters
   (electric-pair-mode 1)
 
+  (setq-default tab-width 2)
+
+	;; yes or no
+	(fset 'yes-or-no-p 'y-or-n-p)
+
+	(setq org-export-backends (quote (
+																		html
+																		man
+																		)))
+
   ;; Backup Management
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups/")))))
 
@@ -151,13 +161,15 @@
       company-minimum-prefix-length 1
       lsp-idle-delay 0.1)
 
+(use-package ebnf2ps)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(clang-format+ projectile lsp-treemacs treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
+	 '(ox-html ox-man company-org-block ebnf-mode clang-format+ projectile lsp-treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
