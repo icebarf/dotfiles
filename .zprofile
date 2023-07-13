@@ -34,7 +34,7 @@ export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 export LANG=en_US.UTF-8
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
+eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" 2>&1 /dev/null 
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -46,11 +46,14 @@ export XDG_DATA_DIR="/usr/share:$XDG_DATA_HOME"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 
+export RUSTUP_HOME="$HOME/.local/share/rustup"
+export CARGO_HOME="$HOME/.local/share/cargo"
+
 export PATH="$PATH:$HOME/.local/usr/bin"
 
-doas rmmod acpi_call
-doas modprobe acpi_call
-doas turn_off_gpu
+doas rmmod acpi_call 2>&1 /dev/null 
+doas modprobe acpi_call 2>&1 /dev/null 
+doas turn_off_gpu 2>&1 /dev/null 
 
 pipewire -c "$XDG_CONFIG_HOME/pipewire/pipewire.conf" &
 /usr/bin/emacs --daemon &
