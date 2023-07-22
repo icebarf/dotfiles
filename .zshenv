@@ -1,7 +1,5 @@
 if [ -e "/home/ice/.local/share/cargo/env" ]; then . "/home/ice/.local/share/cargo/env"; fi
 
-if [ -e /home/ice/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ice/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 . /etc/zprofile
 
 REPODIR="$HOME/software/repos"
@@ -51,3 +49,5 @@ export PATH="$PATH:$HOME/.local/usr/bin"
 export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 export LANG=en_US.UTF-8
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+if [ -e /home/ice/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ice/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
