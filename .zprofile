@@ -8,4 +8,4 @@ doas turn_off_gpu 2>&1 /dev/null
 
 pipewire -c "$XDG_CONFIG_HOME/pipewire/pipewire.conf" &
 /usr/bin/emacs --daemon &
-exec sway
+exec sway -dV
