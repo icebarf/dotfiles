@@ -1,6 +1,5 @@
-if [ -e "/home/ice/.local/share/cargo/env" ]; then . "/home/ice/.local/share/cargo/env"; fi
-
-. /etc/zprofile
+. "/etc/zprofile"
+. "$HOME/.local/share/cargo/env"
 
 REPODIR="$HOME/software/repos"
 export KISS_PATH=""
@@ -16,6 +15,7 @@ KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 
 export KISS_SU="doas"
+export KISS_TMPDIR="/mnt/kiss_tmp"
 
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
 export CXXFLAGS="$CFLAGS"
