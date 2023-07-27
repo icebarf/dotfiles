@@ -1,3 +1,6 @@
+include catppuccin-mocha
+include /etc/sway/config.d/*
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -77,7 +80,6 @@ input "type:touchpad" {
 			tap enabled
 			natural_scroll enabled
 }
-
 
 ### Key bindings
 #
@@ -241,12 +243,19 @@ bar {
 
 
     colors {
-        statusline #ffffff
-        background #282c34
-        active_workspace #c678dd00 #61afef #abb2bf
-        inactive_workspace #282c34ff #282c34ff #abb2bf
+        statusline $mauve
+        separator $mauve
+				background $base
+        inactive_workspace $base $base $text
+				focused_workspace $pink $base $text
     }
 }
 
-include /etc/sway/config.d/*
-
+### Colors
+# target                 title     bg    text   indicator  border
+client.focused           $pink		 $base $text  $rosewater $blue
+client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.urgent            $red			 $base $peach $overlay0  $red
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
