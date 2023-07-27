@@ -37,9 +37,14 @@
   (setq use-package-always-ensure t))
 
 ;; theme configuration
-(use-package doom-themes
-  :config
-  (load-theme 'doom-one t))
+;(use-package doom-themes
+;  :config
+;  (load-theme 'doom-one t))
+
+
+(use-package catppuccin-theme
+	:config
+	(load-theme 'catppuccin t))
 
 ;; matrix client lmao
 (use-package ement)
@@ -172,7 +177,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-	 '(rustic ox-html ox-man company-org-block ebnf-mode clang-format+ projectile lsp-treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
+	 '(catpuccin-theme catppuccin-theme rustic ox-html ox-man company-org-block ebnf-mode clang-format+ projectile lsp-treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
