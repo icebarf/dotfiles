@@ -7,4 +7,4 @@ set shiftwidth=2
 set expandtab
 
 
-lua require('plugins')
+# lua require('plugins')

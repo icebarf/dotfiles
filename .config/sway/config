@@ -1,4 +1,4 @@
-include catppuccin-mocha
+include catppuccin-macchiato
 include /etc/sway/config.d/*
 
 # Default config for sway
@@ -21,6 +21,8 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
+#set $menu bemenu-run "--nf $teal --af $teal --hf $pink --tf $pink" | xargs swaymsg exec --
+#set $bemenu bemenu-run # --nf $teal --af $teal --hf $pink --tf $pink
 set $menu bemenu-run | xargs swaymsg exec --
 
 # take screenshot of a reagion
@@ -33,7 +35,8 @@ set $ss_full /home/ice/.local/usr/bin/ss_full
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ice/Pictures/Wallpapers/body_of_water_near_mountains.jpg stretch
+output * bg /home/ice/Pictures/Wallpapers/australia_grey.jpg fill
+#output * scale 1.15
 
 #
 # Example configuration:
@@ -111,9 +114,9 @@ input "type:touchpad" {
 # Screenshots
 #
 
-		bindsym $mod+Shift+s exec $ss_region
-		bindsym $mod+Print exec $ss_window
-		bindsym Print exec $ss_full
+    bindsym $mod+Shift+s exec $ss_region
+    bindsym $mod+Print exec $ss_window
+    bindsym Print exec $ss_full
 
 #
 # Moving around:
@@ -253,9 +256,17 @@ bar {
 
 ### Colors
 # target                 title     bg    text   indicator  border
-client.focused           $pink		 $base $text  $rosewater $blue
-client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-client.unfocused         $mauve    $base $text  $rosewater $mauve
-client.urgent            $red			 $base $peach $overlay0  $red
+#client.focused           $pink		 $base $text  $rosewater $blue
+#client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+#client.unfocused         $mauve    $base $text  $rosewater $mauve
+#client.urgent            $red			 $base $peach $overlay0  $red
+#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.background        $base
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base

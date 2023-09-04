@@ -1,15 +1,21 @@
 . "/etc/zprofile"
-. "$HOME/.local/share/cargo/env"
+#. "$HOME/.local/share/cargo/env"
 
-REPODIR="$HOME/software/repos"
+REPODIR="$HOME/KISS/repos"
 export KISS_PATH=""
+
+# iceland
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/core"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/fonts"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/overrides"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
+ # grepo
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/core"
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/extra"
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/wayland"
+
+# community
 KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 
 export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
@@ -17,10 +23,12 @@ export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 export KISS_SU="doas"
 export KISS_TMPDIR="/mnt/kiss_tmp"
 
+# build flags
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j16"
 
+# XDG envvars
 if test -z "$XDG_RUNTIME_DIR"; then
 		export XDG_RUNTIME_DIR=""
 		XDG_RUNTIME_DIR="/run/user/$(id -u)"
@@ -39,15 +47,14 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME"
 export XDG_DATA_DIR="/usr/share:$XDG_DATA_HOME"
 export XDG_PICTURES_DIR="$HOME/Pictures"
-export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 
+# other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
-
-export PATH="$PATH:$HOME/.local/usr/bin"
-
-export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 export LANG=en_US.UTF-8
+export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
+export PATH="$PATH:$HOME/.local/bin"
+export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+#export BEMENU_OPTS="--nf #94e2d5 --af #94e2d5 --tf #f5c2e7 --hf #f5c2e7 --bindings vim"
 
-if [ -e /home/ice/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ice/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

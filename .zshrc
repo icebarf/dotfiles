@@ -1,9 +1,14 @@
 # Path to your oh-my-zsh installation.
 #installation via script from github
+
 export ZSH="$HOME/.local/share/oh-my-zsh"
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump-$HOST"
+export HISTFILE="$HOME/.cache/zsh/zsh_history"
+
 ZSH_THEME="half-life"
+
 source $ZSH/oh-my-zsh.sh
+
 plugins=(git
         colored-man-pages)
 

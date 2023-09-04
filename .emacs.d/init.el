@@ -11,8 +11,8 @@
   (scroll-bar-mode -1)
   (tab-bar-mode 1)
 
-  (add-to-list 'default-frame-alist '(font . "Comic Mono-13"))
-  (set-frame-font "Comic Mono-13" nil t)
+  (add-to-list 'default-frame-alist '(font . "Comic Mono-14"))
+  (set-frame-font "Comic Mono-14" nil t)
   
   ;; electric pair mode inserts pairs of all bracket-like characters
   (electric-pair-mode 1)
@@ -169,7 +169,12 @@
 
 (use-package ebnf2ps)
 
-(use-package rustic)
+;(use-package rustic)
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -177,7 +182,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-	 '(catpuccin-theme catppuccin-theme rustic ox-html ox-man company-org-block ebnf-mode clang-format+ projectile lsp-treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
+	 '(dashboard catpuccin-theme catppuccin-theme rustic ox-html ox-man company-org-block ebnf-mode clang-format+ projectile lsp-treemacs which-key flycheck multiple-cursors company clang-format ement xah-fly-keys smex doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
