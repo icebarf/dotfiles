@@ -26,11 +26,11 @@ set $term foot
 set $menu bemenu-run | xargs swaymsg exec --
 
 # take screenshot of a reagion
-set $ss_region /home/ice/.local/usr/bin/ss_region
+set $ss_region /home/ice/.local/bin/ss_region
 # take screenshot of active window
-set $ss_window /home/ice/.local/usr/bin/ss_window
+set $ss_window /home/ice/.local/bin/ss_window
 #take screenshot full screen
-set $ss_full /home/ice/.local/usr/bin/ss_full
+set $ss_full /home/ice/.local/bin/ss_full
 
 ### Output configuration
 #

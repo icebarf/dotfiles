@@ -10,7 +10,11 @@ KISS_PATH="$KISS_PATH:$REPODIR/iceland/fonts"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/overrides"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
- # grepo
+
+# testuser
+KISS_PATH="$KISS_PATH:$REPODIR/testuser/dbus"
+
+# grepo
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/core"
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/extra"
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/wayland"
