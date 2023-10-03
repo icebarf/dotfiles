@@ -18,8 +18,8 @@ else
     export GPG_TTY=$(tty)
 fi
 
-export EDITOR="emacsc"
-export VISUAL="emacsc"
+#export EDITOR="emacsc"
+#export VISUAL="emacsc"
 
 alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
 

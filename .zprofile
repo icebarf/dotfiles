@@ -1,11 +1,11 @@
-eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" 2>&1 /dev/null 
+eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" > /dev/null
 
 . ~/.zshenv
 
-doas rmmod acpi_call 2>&1 /dev/null 
-doas modprobe acpi_call 2>&1 /dev/null 
-doas turn_off_gpu 2>&1 /dev/null 
+doas rmmod acpi_call > /dev/null
+doas modprobe acpi_call > /dev/null
+doas turn_off_gpu > /dev/null
 
-pipewire -c "$XDG_CONFIG_HOME/pipewire/pipewire.conf" &
-/usr/bin/emacs --daemon &
-exec sway -dV
+pipewire &
+#/usr/bin/emacs --daemon &
+exec sway

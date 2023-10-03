@@ -1,7 +1,7 @@
 . "/etc/zprofile"
 #. "$HOME/.local/share/cargo/env"
 
-REPODIR="$HOME/KISS/repos"
+REPODIR="$HOME/.local/share/kiss/repos"
 export KISS_PATH=""
 
 # iceland
@@ -12,7 +12,7 @@ KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
 
 # testuser
-KISS_PATH="$KISS_PATH:$REPODIR/testuser/dbus"
+#KISS_PATH="$KISS_PATH:$REPODIR/testuser/dbus"
 
 # grepo
 KISS_PATH="$KISS_PATH:$REPODIR/grepo/core"
@@ -25,7 +25,7 @@ KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 
 export KISS_SU="doas"
-export KISS_TMPDIR="/mnt/kiss_tmp"
+export KISS_TMPDIR="/mnt/kiss-tmp"
 
 # build flags
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
