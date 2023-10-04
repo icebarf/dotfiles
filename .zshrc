@@ -18,7 +18,7 @@ else
     export GPG_TTY=$(tty)
 fi
 
-#export EDITOR="emacsc"
+export EDITOR="kak"
 #export VISUAL="emacsc"
 
 alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
@@ -42,7 +42,8 @@ alias yta-aac="yt-dlp --extract-audio --audio-format aac "
 alias yta-best="yt-dlp --extract-audio --audio-format best "
 alias yta-flac="yt-dlp --extract-audio --audio-format flac "
 alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
-alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+besta
+udio' --merge-output-format mp4 "
 
 #gpg
 #verify signature for isos
@@ -50,7 +51,7 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 
 #fixes
-alias fix-permissions="doas chown -R $USER:$USER ~/.config ~/.local && chmod 0755 ~/Pictures/Wallpapers"
+alias fix-permissions="doas chown -R $USER:$USER ~/.config ~/.local"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -88,12 +89,6 @@ kissalt ()
 #remove
 alias rmgitcache="rm -r ~/.cache/git"
 
-# cd
-alias cdpr='cd ~/Projects/'
-alias cdc='cd ~/Projects/C'
-
-# python
-alias py='python3'
-
 # fan control
-alias fan_control='doas emacs -nw /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy'
+alias fan_control='doas $EDITOR \
+		/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy'
