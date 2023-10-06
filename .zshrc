@@ -21,9 +21,15 @@ fi
 export EDITOR="kak"
 #export VISUAL="emacsc"
 
-alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
+# syntax highlighting
+highlighter="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [ -e $highlighter ] ; then
+	source $highlighter
+fi
 
 # Aliases
+
+alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
 
 #continue download
 alias wget="wget -c"
