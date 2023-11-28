@@ -1,6 +1,10 @@
 eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
 
-. ~/.zshenv
+source /etc/profile
+source $HOME/.zshenv
+
+#sudo modprobe usbnet
+#sudo modprobe cdc_ether
 
 #doas rmmod acpi_call > /dev/null
 #doas modprobe acpi_call > /dev/null

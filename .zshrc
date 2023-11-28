@@ -59,6 +59,19 @@ alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 #fixes
 alias fix-permissions="doas chown -R $USER:$USER ~/.config ~/.local"
 
+make_kindle_wall ()
+{
+    if [ -f $1 ]; then
+        convert $1 -colorspace Lab -filter LanczosSharp \
+        -distort Resize 1236x1648 -colorspace sRGB \
+        -background black -gravity center -extent 1236x1648! \
+        -grayscale Rec709Luminance -colorspace sRGB \
+        -dither Riemersma \
+        -remap /home/ice/Pictures/KindleWallpapers/eink_cmap.gif \
+        -quality 75 png:out.png
+    fi
+}
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()

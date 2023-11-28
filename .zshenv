@@ -62,4 +62,4 @@ export PATH="$PATH:$HOME/.local/bin"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 xset r rate 250 50
-
+set -o vi
