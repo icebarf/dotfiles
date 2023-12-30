@@ -18,6 +18,7 @@ else
     export GPG_TTY=$(tty)
 fi
 
+SU_PROG="sudo"
 export EDITOR="kak"
 #export VISUAL="emacsc"
 
@@ -38,10 +39,10 @@ alias wget="wget -c"
 alias userlist="cut -d: -f1 /etc/passwd"
 
 #grub update
-alias update-grub="doas grub-mkconfig -o /boot/grub/grub.cfg"
+alias update-grub="$SU_PROG grub-mkconfig -o /boot/grub/grub.cfg"
 
 #add new fonts
-alias update-fc='doas fc-cache -fv'
+alias update-fc='$SU_PROG fc-cache -fv'
 
 #youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
@@ -57,7 +58,7 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 
 #fixes
-alias fix-permissions="doas chown -R $USER:$USER ~/.config ~/.local"
+alias fix-permissions="$SU_PROG chown -R $USER:$USER ~/.config ~/.local"
 
 make_kindle_wall ()
 {
@@ -109,5 +110,5 @@ kissalt ()
 alias rmgitcache="rm -r ~/.cache/git"
 
 # fan control
-alias fan_control='doas $EDITOR \
+alias fan_control='$SU_PROG $EDITOR \
 		/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy'

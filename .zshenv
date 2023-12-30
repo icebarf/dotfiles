@@ -57,9 +57,14 @@ export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export LANG=en_US.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/opt/cross/bin"
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+
+# Japanese localisation
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
 xset r rate 250 50
 set -o vi
