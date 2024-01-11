@@ -3,6 +3,8 @@ eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
 source /etc/profile
 source $HOME/.zshenv
 
+yomitan_audio_server &
+
 #sudo modprobe usbnet
 #sudo modprobe cdc_ether
 

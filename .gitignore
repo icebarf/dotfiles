@@ -19,3 +19,4 @@
 /.local/share/kiss/linux/*
 !/.local/share/kiss/linux/config
 !/.gitignore
+!/.config/mpv
