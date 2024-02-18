@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
 #installation via script from github
-
 export ZSH="$HOME/.local/share/oh-my-zsh"
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump-$HOST"
 export HISTFILE="$HOME/.cache/zsh/zsh_history"
 
-ZSH_THEME="half-life"
+#ZSH_THEME="half-life"
+ZSH_THEME="Chicago95"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,6 +59,7 @@ alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 
 #fixes
 alias fix-permissions="$SU_PROG chown -R $USER:$USER ~/.config ~/.local"
+alias fix-keyring="$SU_PROG pacman -Sy archlinux-keyring chaotic-keyring && $SU_PROG pacman -S chaotic-mirrorlist"
 
 make_kindle_wall ()
 {
