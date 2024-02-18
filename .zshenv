@@ -33,15 +33,15 @@ export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j16"
 
 # XDG envvars
-#if test -z "$XDG_RUNTIME_DIR"; then
-#		export XDG_RUNTIME_DIR=""
-#		XDG_RUNTIME_DIR="/run/user/$(id -u)"
-#	if ! test -d "$XDG_RUNTIME_DIR"; then
-#		doas mkdir --parents "$XDG_RUNTIME_DIR"
-#		doas chmod 0750 "$XDG_RUNTIME_DIR"
-#		doas chown -R ice:wheel "$XDG_RUNTIME_DIR"
-#	fi
-#fi
+if test -z "$XDG_RUNTIME_DIR"; then
+		export XDG_RUNTIME_DIR=""
+		XDG_RUNTIME_DIR="/run/user/$(id -u)"
+	if ! test -d "$XDG_RUNTIME_DIR"; then
+		doas mkdir --parents "$XDG_RUNTIME_DIR"
+		doas chmod 0750 "$XDG_RUNTIME_DIR"
+		doas chown -R ice:wheel "$XDG_RUNTIME_DIR"
+	fi
+fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -49,8 +49,13 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME"
-export XDG_DATA_DIR="/usr/share:$XDG_DATA_HOME"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:$XDG_DATA_HOME"
+
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_DOWNLOADS_DIR="$HOME/Downloads"
 export XDG_PICTURES_DIR="$HOME/Pictures"
+export XDG_VIDEOS_DIR="$HOME/Videos"
 
 # other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
@@ -63,8 +68,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # Japanese localisation
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS="@im=ibus"
+#export GTK_IM_MODULE=ibus
+#export QT_IM_MODULE=ibus
+#export XMODIFIERS="@im=ibus"
 xset r rate 250 50
-set -o vi
+set -o emacs
