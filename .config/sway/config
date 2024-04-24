@@ -39,8 +39,9 @@ set $ss_full /home/ice/.local/bin/ss_full
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ice/Downloads/catppuccin.png fill
-#output * scale 1.15
+#output * bg /home/ice/Pictures/Wallpapers/car_travelling_through_texas.png fit
+output * bg ~/Pictures/Wallpapers/landscape_tower_hills_waterfall.png fit
+output * scale 1.2
 
 #
 # Example configuration:
