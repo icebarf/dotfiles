@@ -1,36 +1,34 @@
-#. "/etc/zprofile"
-#. "$HOME/.local/share/cargo/env"
+. "/etc/zprofile"
 
-#REPODIR="$HOME/.local/share/kiss/repos"
-#export KISS_PATH=""
+REPODIR="$HOME/.local/share/kiss/repos"
+export KISS_PATH=""
 
 # iceland
-#KISS_PATH="$KISS_PATH:$REPODIR/iceland/core"
-#KISS_PATH="$KISS_PATH:$REPODIR/iceland/fonts"
-#KISS_PATH="$KISS_PATH:$REPODIR/iceland/overrides"
-#KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
-#KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/core"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/fonts"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
 
 # testuser
 #KISS_PATH="$KISS_PATH:$REPODIR/testuser/dbus"
 
-# grepo
-#KISS_PATH="$KISS_PATH:$REPODIR/grepo/core"
-#KISS_PATH="$KISS_PATH:$REPODIR/grepo/extra"
-#KISS_PATH="$KISS_PATH:$REPODIR/grepo/wayland"
+# repo
+KISS_PATH="$KISS_PATH:$REPODIR/repo/core"
+KISS_PATH="$KISS_PATH:$REPODIR/repo/extra"
+KISS_PATH="$KISS_PATH:$REPODIR/repo/wayland"
 
 # community
-#KISS_PATH="$KISS_PATH:$REPODIR/community/community"
+KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 
 #export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 
-#export KISS_SU="doas"
-#export KISS_TMPDIR="/mnt/kiss-tmp"
+export KISS_SU="doas"
+export KISS_TMPDIR="/mnt/kiss-tmp"
 
 # build flags
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j16"
+export MAKEFLAGS="-j8"
 
 # XDG envvars
 if test -z "$XDG_RUNTIME_DIR"; then
@@ -71,5 +69,5 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 #export GTK_IM_MODULE=ibus
 #export QT_IM_MODULE=ibus
 #export XMODIFIERS="@im=ibus"
-xset r rate 250 50
+#xset r rate 250 50
 set -o emacs

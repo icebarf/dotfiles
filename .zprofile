@@ -1,10 +1,8 @@
 eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
 
-source /etc/profile
 source $HOME/.zshenv
 
-
-setxkbmap -option caps:swapescape
+#setxkbmap -option caps:swapescape
 
 #yomitan_audio_server &
 
@@ -15,6 +13,7 @@ setxkbmap -option caps:swapescape
 #doas modprobe acpi_call > /dev/null
 #doas turn_off_gpu > /dev/null
 
-#pipewire &
+exec pipewire &
+exec tlp init start &
 #/usr/bin/emacs --daemon &
-#exec sway
+exec sway

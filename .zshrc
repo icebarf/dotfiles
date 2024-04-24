@@ -18,15 +18,15 @@ else
     export GPG_TTY=$(tty)
 fi
 
-SU_PROG="sudo"
-export EDITOR="kak"
+SU_PROG="doas"
+export EDITOR="vi"
 #export VISUAL="emacsc"
 
 # syntax highlighting
-highlighter="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-if [ -e $highlighter ] ; then
-	source $highlighter
-fi
+#highlighter="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+#if [ -e $highlighter ] ; then
+#	source $highlighter
+#fi
 
 # Aliases
 
@@ -34,12 +34,6 @@ alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
 
 #continue download
 alias wget="wget -c"
-
-#userlist
-alias userlist="cut -d: -f1 /etc/passwd"
-
-#grub update
-alias update-grub="$SU_PROG grub-mkconfig -o /boot/grub/grub.cfg"
 
 #add new fonts
 alias update-fc='$SU_PROG fc-cache -fv'
