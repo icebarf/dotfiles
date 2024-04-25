@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# kill previous instances
+doas pkill dhcpcd
+doas pkill wpa_supplicant
+
+# start
+CONFIG=$XDG_CONFIG_HOME/wpa_supplicant/infuser
+INTERFACE=wlan0
+doas wpa_supplicant -c "$CONFIG" -i "$INTERFACE" -B
+doas dhcpcd

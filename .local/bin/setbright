@@ -1,2 +1,9 @@
 #!/bin/sh
-echo "$1" | "$KISS_SU" tee /sys/class/backlight/amdgpu_bl0/brightness
+
+FILE="/sys/class/backlight/*/brightness"
+MAX_BRIGHTNESS=1515
+
+BRIGHT=$(($1 * MAX_BRIGHTNESS))
+BRIGHT=$((BRIGHT / 100))
+
+echo $BRIGHT | $SU_PROG tee $FILE
