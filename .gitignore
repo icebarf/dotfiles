@@ -20,3 +20,6 @@
 !/.local/share/kiss/linux/config
 !/.gitignore
 !/.config/mpv
+!/.local/share/kiss/linux/config_thinkpad_t480
+!/.local/share/kiss/linux/config_tuf_fx505dt
+!/.local/bin

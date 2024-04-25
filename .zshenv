@@ -23,6 +23,7 @@ KISS_PATH="$KISS_PATH:$REPODIR/community/community"
 #export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 
 export KISS_SU="doas"
+export SU_PROG="doas"
 export KISS_TMPDIR="/mnt/kiss-tmp"
 
 # build flags

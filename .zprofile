@@ -13,6 +13,7 @@ source $HOME/.zshenv
 #doas modprobe acpi_call > /dev/null
 #doas turn_off_gpu > /dev/null
 
+exec wifi_cat &
 exec pipewire &
 exec tlp init start &
 #/usr/bin/emacs --daemon &

@@ -18,7 +18,7 @@ else
     export GPG_TTY=$(tty)
 fi
 
-SU_PROG="doas"
+export SU_PROG="doas"
 export EDITOR="vi"
 #export VISUAL="emacsc"
 
