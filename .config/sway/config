@@ -40,7 +40,8 @@ set $ss_full /home/ice/.local/bin/ss_full
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /home/ice/Pictures/Wallpapers/car_travelling_through_texas.png fit
-output * bg ~/Pictures/Wallpapers/landscape_tower_hills_waterfall.png fit
+#output * bg ~/Pictures/Wallpapers/landscape_tower_hills_waterfall.png fit
+output * bg ~/Pictures/Wallpapers/mountains_foggy_dark.jpg fit
 output * scale 1.2
 
 #
