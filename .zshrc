@@ -106,3 +106,4 @@ alias rmgitcache="rm -r ~/.cache/git"
 # fan control
 alias fan_control='$SU_PROG $EDITOR \
 		/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy'
+alias swayconfig="$EDITOR $XDG_CONFIG_HOME/sway/config"

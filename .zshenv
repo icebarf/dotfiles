@@ -4,13 +4,10 @@ REPODIR="$HOME/.local/share/kiss/repos"
 export KISS_PATH=""
 
 # iceland
-KISS_PATH="$KISS_PATH:$REPODIR/iceland/core"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/editors"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/fonts"
-KISS_PATH="$KISS_PATH:$REPODIR/iceland/personal"
+KISS_PATH="$KISS_PATH:$REPODIR/iceland/overrides"
 KISS_PATH="$KISS_PATH:$REPODIR/iceland/utils"
-
-# testuser
-#KISS_PATH="$KISS_PATH:$REPODIR/testuser/dbus"
 
 # repo
 KISS_PATH="$KISS_PATH:$REPODIR/repo/core"
@@ -19,6 +16,7 @@ KISS_PATH="$KISS_PATH:$REPODIR/repo/wayland"
 
 # community
 KISS_PATH="$KISS_PATH:$REPODIR/community/community"
+KISS_PATH="$KISS_PATH:$REPODIR/dbus/dbus"
 
 #export KISS_MAINTAINED="$HOME/software/maintainer/community/community/"
 
@@ -55,6 +53,8 @@ export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_DOWNLOADS_DIR="$HOME/Downloads"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
+
+export XDG_CURRENT_DESKTOP=sway
 
 # other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
