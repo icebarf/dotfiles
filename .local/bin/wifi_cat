@@ -7,5 +7,5 @@ doas pkill wpa_supplicant
 # start
 CONFIG=$XDG_CONFIG_HOME/wpa_supplicant/cat_consumer_singh
 INTERFACE=wlan0
-doas wpa_supplicant -c "$CONFIG" -i "$INTERFACE" -B
 doas dhcpcd
+doas wpa_supplicant -c "$CONFIG" -i "$INTERFACE" -B &
