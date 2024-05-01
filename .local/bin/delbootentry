@@ -1,0 +1,3 @@
+#!/bin/sh
+
+efibootmgr -b $1 -B

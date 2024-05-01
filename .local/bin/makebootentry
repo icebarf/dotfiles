@@ -1,0 +1,10 @@
+#!/bin/sh
+
+efibootmgr \
+	--disk /dev/nvme0n1 \
+	--part 1 \
+	--create \
+	--label "KISS" \
+	--loader /vmlinuz-$LINUX_VERSION \
+	--unicode 'root=/dev/nvme0n1p3 resume=/dev/nvme0n1p2 rw loglevel=3 efi=runtime'
+	#--unicode 'root=UUID=921c26b7-b793-4405-8372-fc3800103133 resume=UUID=5342522d-9c6d-4d55-a7ac-3a532ce73ca5 rw loglevel=3'
