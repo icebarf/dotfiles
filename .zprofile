@@ -16,5 +16,5 @@ source $HOME/.zshenv
 exec wifi_cat &
 exec pipewire &
 exec tlp init start &
-emacs --daemon &
+# emacs --daemon &
 exec sway

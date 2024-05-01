@@ -27,7 +27,7 @@ export KISS_TMPDIR="/mnt/kiss-tmp"
 # build flags
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j8"
+export MAKEFLAGS="-j12"
 
 # XDG envvars
 if test -z "$XDG_RUNTIME_DIR"; then
