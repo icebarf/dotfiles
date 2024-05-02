@@ -37,7 +37,7 @@
   :ensure t
   :hook
   (c-mode . eglot-ensure)
-  (c++mode . eglot-ensure))
+  (c++-mode . eglot-ensure))
 
 (use-package emacs
   :init
