@@ -56,19 +56,26 @@
 
   ;; font config
   (add-to-list 'default-frame-alist
-               '(font . "Iosevka NF-14"))
-  (set-face-attribute 'default t :font "Iosevka NF-12")
-  (set-face-attribute 'default nil :font "Iosevka NF-12")
+               '(font . "Iosevka Nerd Font-14"))
+  (set-face-attribute 'default t :font "Iosevka Nerd Font-14")
+  (set-face-attribute 'default nil :font "Iosevka Nerd Font-14")
 
   ;; utf-8-unix style coding always (newlines at the end)
   (set-buffer-file-coding-system 'utf-8-unix)
 
   ;; xah fly keys go brr
-  (add-to-list 'load-path "~/.emacs.d/lisp/")
+  (add-to-list 'load-path "~/.config/emacs/lisp/")
   (require 'xah-fly-keys)
   (xah-fly-keys-set-layout "qwerty")
   (xah-fly-keys 1)
 
+  ;; daemon mode fixup
+  (defun my/server-fix-up()
+    (xah-fly-keys-set-layout "qwerty")
+    (xah-fly-keys t))
+  (if (daemonp)
+      (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
+  
   (define-key xah-fly-command-map (kbd "SPC w q") 'save-buffers-kill-terminal)
   (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
   )
@@ -123,3 +130,16 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
