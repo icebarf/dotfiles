@@ -2,6 +2,10 @@ eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
 
 source $HOME/.zshenv
 
+export $(dbus-launch)
+doas mkdir --parents /run/dbus/
+doas dbus-daemon --system &
+
 #setxkbmap -option caps:swapescape
 
 #yomitan_audio_server &
