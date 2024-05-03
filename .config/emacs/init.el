@@ -39,6 +39,84 @@
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure))
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package nerd-icons
+  :ensure t
+  :custom
+  (nerd-icons-font-family "Symbols Nerd Font Mono"))
+
+(use-package projectile
+  :after xah-fly-keys
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key xah-fly-command-map (kbd "SPC w p") 'projectile-command-map))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config)
+
+(use-package treemacs-projectile
+  :ensure t
+  :after (treemacs projectile))
+
+(use-package treemacs-tab-bar
+  :after (treemacs)
+  :ensure t
+  :config (treemacs-set-scope-type 'Tabs))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-setup-side-window-right-bottom)
+  ;;(which-key-setup-side-window-bottom)
+  (which-key-mode 1))
+
+(use-package xah-fly-keys
+  :ensure t
+  :config
+  (xah-fly-keys-set-layout "qwerty")
+  (xah-fly-keys 1)
+
+  ;; daemon mode fixup
+  (defun my/server-fix-up()
+    (xah-fly-keys-set-layout "qwerty")
+    (xah-fly-keys t))
+  (if (daemonp)
+      (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
+  
+  ;; random `w'orkspace related keybinds
+  (define-key xah-fly-command-map (kbd "SPC w q") 'save-buffers-kill-terminal)
+  (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
+  
+  ;; `v' prefix keybinds - think variables or identifiers in code.
+  
+  ;; eglot
+  (define-key xah-fly-command-map (kbd "SPC v r") 'eglot-rename)
+  (define-key xah-fly-command-map (kbd "SPC v d") 'eglot-find-declaration)
+  (define-key xah-fly-command-map (kbd "SPC v i") 'eglot-find-implementation)
+  (define-key xah-fly-command-map (kbd "SPC v t") 'eglot-find-typeDefinition)
+  )
+
+(use-package yasnippet
+  :ensure t
+  :init
+  (use-package yasnippet-snippets
+    :ensure t)
+  (yas-global-mode 1))
+
+;; Emacs customization
+
 (use-package emacs
   :init
   (setq completion-cycle-threshold 3)
@@ -62,74 +140,9 @@
 
   ;; utf-8-unix style coding always (newlines at the end)
   (set-buffer-file-coding-system 'utf-8-unix)
-
-  ;; xah fly keys go brr
-  (add-to-list 'load-path "~/.config/emacs/lisp/")
-  (require 'xah-fly-keys)
-  (xah-fly-keys-set-layout "qwerty")
-  (xah-fly-keys 1)
-
-  ;; daemon mode fixup
-  (defun my/server-fix-up()
-    (xah-fly-keys-set-layout "qwerty")
-    (xah-fly-keys t))
-  (if (daemonp)
-      (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
-  
-  (define-key xah-fly-command-map (kbd "SPC w q") 'save-buffers-kill-terminal)
-  (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
   )
 
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
 
-(use-package nerd-icons
-  :ensure t
-  :custom
-  (nerd-icons-font-family "Symbols Nerd Font Mono"))
-
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode +1)
-  (define-key xah-fly-command-map (kbd "SPC w p") 'projectile-command-map))
-
-(use-package rainbow-delimiters
-  :ensure t
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
-
-(use-package treemacs
-  :ensure t
-  :defer t)
-
-(use-package treemacs-projectile
-  :ensure t
-  :after (treemacs projectile))
-
-(use-package treemacs-tab-bar
-  :after (treemacs)
-  :ensure t
-  :config (treemacs-set-scope-type 'Tabs))
-
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-setup-side-window-right-bottom)
-  ;;(which-key-setup-side-window-bottom)
-  (which-key-mode 1))
-
-(use-package yasnippet
-  :ensure t
-  :init
-  (use-package yasnippet-snippets
-    :ensure t)
-  (yas-global-mode 1))
-
-(provide 'init)
-;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
