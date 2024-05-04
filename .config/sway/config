@@ -125,6 +125,11 @@ input "type:touchpad" {
     bindsym Print exec $ss_full
 
 #
+# Opening Programs
+#
+    bindsym $mod+e exec emacsc
+    bindsym $mod+Shift+w exec flatpak-firefox
+#
 # Moving around:
 #
     # Move your focus around
@@ -187,7 +192,7 @@ input "type:touchpad" {
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+t layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
