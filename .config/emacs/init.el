@@ -56,15 +56,23 @@
   (projectile-mode +1)
   (define-key xah-fly-command-map (kbd "SPC w p") 'projectile-command-map))
 
+(use-package projectile-ripgrep
+  :after (projectile ripgrep)
+  :ensure t)
+
 (use-package rainbow-delimiters
   :ensure t
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
+(use-package ripgrep
+  :ensure t)
+
 (use-package treemacs
   :ensure t
   :defer t
-  :config)
+  :init
+  (treemacs-set-width 20))
 
 (use-package treemacs-projectile
   :ensure t
@@ -96,9 +104,8 @@
       (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
   
   ;; random `w'orkspace related keybinds
-  (define-key xah-fly-command-map (kbd "SPC w q") 'save-buffers-kill-terminal)
   (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
-  
+  (define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)  
   ;; `v' prefix keybinds - think variables or identifiers in code.
   
   ;; eglot
@@ -140,6 +147,7 @@
 
   ;; utf-8-unix style coding always (newlines at the end)
   (set-buffer-file-coding-system 'utf-8-unix)
+  (prefer-coding-system 'utf-8-unix)
   )
 
 
@@ -149,7 +157,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
+   '(projectile-ripgrep yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
