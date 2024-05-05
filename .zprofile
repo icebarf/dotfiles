@@ -19,6 +19,8 @@ doas dbus-daemon --system &
 
 exec wifi_cat &
 exec pipewire &
+#exec pipewire-pulse &
+exec wireplumber &
 exec tlp init start &
- emacs --daemon &
+exec emacs --daemon &
 exec sway
