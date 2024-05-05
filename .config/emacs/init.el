@@ -2,6 +2,13 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(use-package catppuccin-theme
+  :ensure t
+  :config
+  (load-theme 'catppuccin t)
+  (setq catppuccin-flavor 'mocha)
+  (catppuccin-reload))
+
 (use-package company
   :ensure t
   :hook
@@ -21,17 +28,6 @@
   ;; Hooks that run before/after the modeline version string is updated
   (setq doom-modeline-before-update-env-hook nil)
   (setq doom-modeline-after-update-env-hook nil))
-
-(use-package doom-themes
-  :ensure t
-  :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-one t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-neotree-config)
-  ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-org-config))
 
 (use-package eglot
   :ensure t
@@ -54,7 +50,7 @@
   :ensure t
   :config
   (projectile-mode +1)
-  (define-key xah-fly-command-map (kbd "SPC w p") 'projectile-command-map))
+  (define-key xah-fly-command-map (kbd "SPC P") 'projectile-command-map))
 
 (use-package projectile-ripgrep
   :after (projectile ripgrep)
@@ -70,9 +66,7 @@
 
 (use-package treemacs
   :ensure t
-  :defer t
-  :init
-  (treemacs-set-width 20))
+  :defer t)
 
 (use-package treemacs-projectile
   :ensure t
@@ -104,15 +98,22 @@
       (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
   
   ;; random `w'orkspace related keybinds
-  (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
   (define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)  
-  ;; `v' prefix keybinds - think variables or identifiers in code.
-  
+  (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
+
   ;; eglot
-  (define-key xah-fly-command-map (kbd "SPC v r") 'eglot-rename)
-  (define-key xah-fly-command-map (kbd "SPC v d") 'eglot-find-declaration)
-  (define-key xah-fly-command-map (kbd "SPC v i") 'eglot-find-implementation)
-  (define-key xah-fly-command-map (kbd "SPC v t") 'eglot-find-typeDefinition)
+  (define-key xah-fly-command-map (kbd "SPC E r") 'eglot-rename)
+  (define-key xah-fly-command-map (kbd "SPC E d") 'eglot-find-declaration)
+  (define-key xah-fly-command-map (kbd "SPC E i") 'eglot-find-implementation)
+  (define-key xah-fly-command-map (kbd "SPC E t") 'eglot-find-typeDefinition)
+  (define-key xah-fly-command-map (kbd "SPC E f") 'eglot-format-buffer)
+  (define-key xah-fly-command-map (kbd "SPC E F") 'eglot-format)
+
+  ;; flymake
+  (define-key xah-fly-command-map (kbd "SPC F n") 'flymake-goto-next-error)
+  (define-key xah-fly-command-map (kbd "SPC F p") 'flymake-goto-previous-error)
+  (define-key xah-fly-command-map (kbd "SPC F b") 'flymake-show-buffer-diagnostics)
+  (define-key xah-fly-command-map (kbd "SPC F d") 'flymake-show-project-diagnostics)
   )
 
 (use-package yasnippet
@@ -157,7 +158,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(projectile-ripgrep yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
+   '(catppuccin-theme projectile-ripgrep yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
