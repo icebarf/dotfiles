@@ -2,6 +2,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(add-to-list 'load-path "~/.config/emacs/lisp/")
+
 (use-package catppuccin-theme
   :ensure t
   :config
@@ -90,30 +92,8 @@
   (xah-fly-keys-set-layout "qwerty")
   (xah-fly-keys 1)
 
-  ;; daemon mode fixup
-  (defun my/server-fix-up()
-    (xah-fly-keys-set-layout "qwerty")
-    (xah-fly-keys t))
-  (if (daemonp)
-      (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
-  
-  ;; random `w'orkspace related keybinds
-  (define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)  
-  (define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
-
-  ;; eglot
-  (define-key xah-fly-command-map (kbd "SPC E r") 'eglot-rename)
-  (define-key xah-fly-command-map (kbd "SPC E d") 'eglot-find-declaration)
-  (define-key xah-fly-command-map (kbd "SPC E i") 'eglot-find-implementation)
-  (define-key xah-fly-command-map (kbd "SPC E t") 'eglot-find-typeDefinition)
-  (define-key xah-fly-command-map (kbd "SPC E f") 'eglot-format-buffer)
-  (define-key xah-fly-command-map (kbd "SPC E F") 'eglot-format)
-
-  ;; flymake
-  (define-key xah-fly-command-map (kbd "SPC F n") 'flymake-goto-next-error)
-  (define-key xah-fly-command-map (kbd "SPC F p") 'flymake-goto-previous-error)
-  (define-key xah-fly-command-map (kbd "SPC F b") 'flymake-show-buffer-diagnostics)
-  (define-key xah-fly-command-map (kbd "SPC F d") 'flymake-show-project-diagnostics)
+  (load-file "lisp/xah-fly-keys-config.el")
+  (load-file "lisp/xah-fly-keys-keybinds.el")
   )
 
 (use-package yasnippet
