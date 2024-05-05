@@ -1,4 +1,4 @@
-include catppuccin-macchiato
+include catppuccin-mocha
 include /etc/sway/config.d/*
 
 # Default config for sway
@@ -26,8 +26,14 @@ set $term foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 
+# Latte
+#set $menu bemenu-run --fb "#eff1f5" --ff "#4c4f69" --nb "#eff1f5" --nf "#4c4f69" --tb "#eff1f5" --hb "#eff1f5" --tf "#d20f39" --hf "#df8e1d" --af "#4c4f69" --ab "#eff1f5"
+
 # macchiato
-set $menu bemenu-run --fb "#24273a" --ff "#cad3f5" --nb "#24273a" --nf "#cad3f5" --tb "#24273a" --hb "#24273a" --tf "#ed8796" --hf "#eed49f" --nf "#cad3f5" --af "#cad3f5" --ab "#24273a"
+#set $menu bemenu-run --fb "#24273a" --ff "#cad3f5" --nb "#24273a" --nf "#cad3f5" --tb "#24273a" --hb "#24273a" --tf "#ed8796" --hf "#eed49f" --nf "#cad3f5" --af "#cad3f5" --ab "#24273a"
+
+# Mocha
+set $menu bemenu-run --fb "#1e1e2e" --ff "#cdd6f4" --nb "#1e1e2e" --nf "#cdd6f4" --tb "#1e1e2e" --hb "#1e1e2e" --tf "#f38ba8" --hf "#f9e2af" --af "#cdd6f4" --ab "#1e1e2e"
 
 # take screenshot of a reagion
 set $ss_region /home/ice/.local/bin/ss_region
@@ -41,8 +47,9 @@ set $ss_full /home/ice/.local/bin/ss_full
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /home/ice/Pictures/Wallpapers/car_travelling_through_texas.png fit
 #output * bg ~/Pictures/Wallpapers/landscape_tower_hills_waterfall.png fit
-output * bg ~/Pictures/Wallpapers/mountains_foggy_dark.jpg fit
-output * scale 1.2
+#output * bg ~/Pictures/Wallpapers/mountains_foggy_dark.jpg fit
+output * bg ~/Pictures/Wallpapers/monochrome_wall.png fit
+output * scale 1.0
 
 #
 # Example configuration:
@@ -256,11 +263,15 @@ bar {
     status_command slstatus
     
     colors {
-        statusline $mauve
-        separator $mauve
-				background $base
-        inactive_workspace $base $base $text
-				focused_workspace $pink $base $text
+    	   background         $base
+    	   statusline         $text
+    	   focused_statusline $text
+    	   focused_separator  $base
+    	   focused_workspace  $base $base $green
+    	   active_workspace   $base $base $blue
+    	   inactive_workspace $base $base $subtext0
+    	   urgent_workspace   $base $base $surface1
+    	   binding_mode       $base $base $surface1
     }
 }
 
