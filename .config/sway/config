@@ -49,7 +49,7 @@ set $ss_full /home/ice/.local/bin/ss_full
 #output * bg ~/Pictures/Wallpapers/landscape_tower_hills_waterfall.png fit
 #output * bg ~/Pictures/Wallpapers/mountains_foggy_dark.jpg fit
 output * bg ~/Pictures/Wallpapers/monochrome_wall.png fit
-output * scale 1.0
+output * scale 1.15
 
 #
 # Example configuration:
