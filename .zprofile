@@ -3,6 +3,7 @@ eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")"
 source $HOME/.zshenv
 
 export $(dbus-launch)
+export MOZ_WAYLAND_DRM_DEVICE="/dev/dri/renderD128"
 doas mkdir --parents /run/dbus/
 doas dbus-daemon --system &
 
@@ -20,7 +21,7 @@ doas dbus-daemon --system &
 exec wifi_cat &
 exec pipewire &
 #exec pipewire-pulse &
-exec wireplumber &
+#exec wireplumber &
 exec tlp init start &
 exec emacs --daemon &
 exec sway
