@@ -1,0 +1,2 @@
+#!/bin/sh
+python3 $HOME/.local/share/local-audio-yomichan/run_server.py

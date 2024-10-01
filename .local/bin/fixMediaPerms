@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo chown -R ice:media_managers /home/ice/Media
+sudo chmod -R 771 /home/ice/Media

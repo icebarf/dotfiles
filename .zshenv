@@ -1,4 +1,4 @@
-. "/etc/zprofile"
+#. "/etc/zprofile"
 
 #REPODIR="$HOME/.local/share/kiss/repos"
 #export KISS_PATH=""
@@ -25,8 +25,8 @@
 #export KISS_TMPDIR="/mnt/kiss-tmp"
 
 # build flags
-export CFLAGS="-O2 -pipe -march=native -mtune=native"
-export CXXFLAGS="$CFLAGS"
+#export CFLAGS="-O2 -pipe -march=native -mtune=native"
+#export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j12"
 
 # XDG envvars
@@ -40,35 +40,37 @@ export MAKEFLAGS="-j12"
 #	fi
 #fi
 
-#export XDG_CONFIG_HOME="$HOME/.config"
-#export XDG_CACHE_HOME="$HOME/.cache"
-#export XDG_DATA_HOME="$HOME/.local/share"
-#export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-#export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME"
+export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME"
 #export XDG_DATA_DIRS="$XDG_DATA_DIRS:$XDG_DATA_HOME"
 
-#export XDG_DESKTOP_DIR="$HOME/Desktop"
-#export XDG_DOCUMENTS_DIR="$HOME/Documents"
-#export XDG_DOWNLOADS_DIR="$HOME/Downloads"
-#export XDG_PICTURES_DIR="$HOME/Pictures"
-#export XDG_VIDEOS_DIR="$HOME/Videos"
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_DOWNLOADS_DIR="$HOME/Downloads"
+export XDG_PICTURES_DIR="$HOME/Pictures"
+export XDG_VIDEOS_DIR="$HOME/Videos"
 
 #export XDG_CURRENT_DESKTOP=sway
 
 # other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
-export LANG=en_IN.UTF-8
+export LANG=en_US.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/opt/cross/bin"
+export PATH="$PATH:$HOME/.local/bin"
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+export PICO_SDK_PATH="$HOME/.pico-sdk"
 
 # Japanese localisation
-#export GTK_IM_MODULE=ibus
-#export QT_IM_MODULE=ibus
-#export XMODIFIERS="@im=ibus"
-#xset r rate 250 50
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export GLFW_IM_MODULE=ibus
+xset r rate 250 50
 #set -o emacs

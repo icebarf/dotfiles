@@ -18,15 +18,26 @@ else
     export GPG_TTY=$(tty)
 fi
 
-export SU_PROG="doas"
-export EDITOR="vi"
+export SU_PROG="sudo"
+export EDITOR="vim"
 #export VISUAL="emacsc"
 
 # syntax highlighting
-#highlighter="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-#if [ -e $highlighter ] ; then
-#	source $highlighter
-#fi
+highlighter="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+autosuggestions="/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+historysearch="/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+
+if [ -e $highlighter ] ; then
+	source $highlighter
+fi
+
+if [ -e $autosuggestions ] ; then
+	source $autosuggestions
+fi
+
+if [ -e $historysearch ] ; then
+	source $historysearch
+fi
 
 # Aliases
 

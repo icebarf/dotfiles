@@ -9,7 +9,7 @@ source $HOME/.zshenv
 
 #setxkbmap -option caps:swapescape
 
-#yomitan_audio_server &
+yomitan_audio_server &
 
 #sudo modprobe usbnet
 #sudo modprobe cdc_ether

@@ -1,0 +1,3 @@
+#!/bin/sh
+PROFILE="$HOME/.mozilla/firefox/o4jsvzq9.default-release"
+vim $PROFILE/chrome/userContent.css
