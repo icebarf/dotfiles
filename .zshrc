@@ -111,6 +111,11 @@ kissalt ()
   kiss a | grep $1 | kiss a -
 }
 
+clearGearthCache()
+{
+  rm -rf ~/.googleearth/Cache/
+}
+
 #remove
 alias rmgitcache="rm -r ~/.cache/git"
 

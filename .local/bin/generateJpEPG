@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /home/ice/AUR/epg
+npm run grab -- --site=tvguide.myjcom.jp --maxConnections=20

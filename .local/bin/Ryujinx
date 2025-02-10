@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $HOME/Programs/ryujinx-1.1.1403/
+./Ryujinx.sh

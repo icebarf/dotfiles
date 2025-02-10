@@ -60,17 +60,26 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export LANG=en_US.UTF-8
+#export LANG=ja_JP.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
-export PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin"
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export PICO_SDK_PATH="$HOME/.pico-sdk"
 
+## Chroot for testing arch packages
+export CHROOT="$HOME/AUR/chroot"
+
 # Japanese localisation
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
 export GLFW_IM_MODULE=ibus
+
+# ibus specific
+export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
 xset r rate 250 50
 #set -o emacs
+
