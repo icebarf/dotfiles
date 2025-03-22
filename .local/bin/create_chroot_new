@@ -1,0 +1,3 @@
+!#/bin/sh
+rm -rf $CHROOT/*
+mkarchroot $CHROOT/root base-devel

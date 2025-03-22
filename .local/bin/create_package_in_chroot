@@ -1,0 +1,2 @@
+#!/bin/sh
+makechrootpkg -c -r $CHROOT
