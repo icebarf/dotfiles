@@ -31,12 +31,6 @@
   (setq doom-modeline-before-update-env-hook nil)
   (setq doom-modeline-after-update-env-hook nil))
 
-(use-package eglot
-  :ensure t
-  :hook
-  (c-mode . eglot-ensure)
-  (c++-mode . eglot-ensure))
-
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
@@ -47,17 +41,6 @@
   :custom
   (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
-(use-package projectile
-  :after xah-fly-keys
-  :ensure t
-  :config
-  (projectile-mode +1)
-  (define-key xah-fly-command-map (kbd "SPC P") 'projectile-command-map))
-
-(use-package projectile-ripgrep
-  :after (projectile ripgrep)
-  :ensure t)
-
 (use-package rainbow-delimiters
   :ensure t
   :hook
@@ -65,19 +48,6 @@
 
 (use-package ripgrep
   :ensure t)
-
-(use-package treemacs
-  :ensure t
-  :defer t)
-
-(use-package treemacs-projectile
-  :ensure t
-  :after (treemacs projectile))
-
-(use-package treemacs-tab-bar
-  :after (treemacs)
-  :ensure t
-  :config (treemacs-set-scope-type 'Tabs))
 
 (use-package which-key
   :ensure t
@@ -277,24 +247,9 @@ e.g. (kbd \"TAB\") or (kbd \"<f9>\") or (kbd \"C-c\")")
   (xah-fly-keys t))
 (if (daemonp)
     (add-hook 'server-after-make-frame-hook 'my/server-fix-up))
-;; random `w'orkspace related keybinds
-(define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)  
-(define-key xah-fly-command-map (kbd "SPC w t") 'treemacs)
 
-;; eglot
-(define-key xah-fly-command-map (kbd "SPC E r") 'eglot-rename)
-(define-key xah-fly-command-map (kbd "SPC E d") 'eglot-find-declaration)
-(define-key xah-fly-command-map (kbd "SPC E i") 'eglot-find-implementation)
-(define-key xah-fly-command-map (kbd "SPC E t") 'eglot-find-typeDefinition)
-(define-key xah-fly-command-map (kbd "SPC E f") 'eglot-format-buffer)
-(define-key xah-fly-command-map (kbd "SPC E F") 'eglot-format)
-
-;; flymake
-(define-key xah-fly-command-map (kbd "SPC F n") 'flymake-goto-next-error)
-(define-key xah-fly-command-map (kbd "SPC F p") 'flymake-goto-prev-error)
-(define-key xah-fly-command-map (kbd "SPC F b") 'flymake-show-buffer-diagnostics)
-(define-key xah-fly-command-map (kbd "SPC F d") 'flymake-show-project-diagnostics)
-  )
+;; random workspace related keybinds
+(define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)
 
 (use-package yasnippet
   :ensure t
@@ -338,7 +293,9 @@ e.g. (kbd \"TAB\") or (kbd \"<f9>\") or (kbd \"C-c\")")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(catppuccin-theme projectile-ripgrep yasnippet-snippets yasnippet which-key treemacs-tab-bar treemacs-projectile treemacs rainbow-delimiters projectile markdown-mode doom-themes doom-modeline company)))
+   '(catppuccin-theme company doom-modeline doom-themes markdown-mode
+		      rainbow-delimiters which-key yasnippet
+		      yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
