@@ -63,7 +63,9 @@ export LANG=en_US.UTF-8
 #export LANG=ja_JP.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin"
+PATH="$PATH:$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin"
+PATH="$PATH:$HOME/x-tools/i686-unknown-elf/bin"
+export PATH
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
