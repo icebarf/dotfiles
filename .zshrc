@@ -47,7 +47,7 @@ alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
 alias wget="wget -c"
 
 #add new fonts
-alias update-fc='$SU_PROG fc-cache -fv'
+alias update-fc='fc-cache -fv'
 
 #youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "

@@ -3,6 +3,11 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.config/emacs/lisp/")
+(use-package gnu-elpa-keyring-update
+  :ensure t)
+
+(use-package avy
+  :ensure t)
 
 (use-package catppuccin-theme
   :ensure t
@@ -15,6 +20,9 @@
   :ensure t
   :hook
   (after-init . global-company-mode))
+
+(use-package dap-mode
+  :ensure t)
 
 (use-package doom-modeline
   :ensure t
@@ -31,6 +39,46 @@
   (setq doom-modeline-before-update-env-hook nil)
   (setq doom-modeline-after-update-env-hook nil))
 
+(use-package helm
+  :after protectile treemacs lsp-treemacs
+  :ensure t
+  :requires helm-lsp helm-xref
+  :config
+  (helm-mode 1)
+  (define-key global-map [remap find-file] #'helm-find-files)
+  (define-key global-map [remap execute-extended-command] #'helm-M-x)
+  (define-key global-map [remap switch-to-buffer] #'helm-mini)
+)
+
+(use-package helm-lsp
+  :ensure t)
+
+(use-package helm-xref
+  :ensure t)
+
+(use-package lsp-mode
+  :after treemacs company
+  :ensure t
+  :config
+  (setq gc-cons-threshold (* 100 1024 1024)
+	read-process-output-max (* 1024 1024)
+	treemacs-space-between-root-nodes nil
+	company-idle-delay 0.0
+	company-minimum-prefix-length 1
+	lsp-idle-delay 0.1
+	lsp-clients-clangd-args '("--query-driver=/home/ice/x-tools/i686-unknown-elf/bin/i686-unknown-elf-g*" "-log=verbose")
+	)
+  )
+
+(use-package lsp-treemacs
+  :after treemacs projectile
+  :ensure t
+  :config
+  (lsp-treemacs-sync-mode 1))
+
+(use-package magit
+  :ensure t)
+
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
@@ -41,6 +89,32 @@
   :custom
   (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
+(use-package projectile
+  :after xah-fly-keys
+  :ensure t
+  :init
+  (setq projectile-project-search-path '("~/Projects/c++/"
+					 "~/Projects/c/"
+					 "~/Projects/gsoc/"
+					 "~/Projects/html/"
+					 "~/Projects/Linux/"
+					 "~/Projects/ms/"
+					 "~/Projects/os/"
+					 "~/Projects/py/"
+					 "~/Projects/regex/"
+					 "~/Projects/site/"
+					 "~/Projects/Web/"
+					 "~/Projects/x86/"
+					 ))
+  :config
+  (projectile-mode +1)
+  (define-key xah-fly-command-map (kbd "SPC P") 'projectile-command-map)
+  )
+
+(use-package projectile-ripgrep
+  :after (projectile ripgrep)
+  :ensure t)
+
 (use-package rainbow-delimiters
   :ensure t
   :hook
@@ -49,12 +123,119 @@
 (use-package ripgrep
   :ensure t)
 
+(use-package treemacs
+  :after winum xah-fly-keys
+  :ensure t
+  :config
+  (define-key winum-keymap (kbd "M-0") #'treemacs-select-window)
+  (progn
+    (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay        0.5
+          treemacs-directory-name-transformer      #'identity
+          treemacs-display-in-side-window          t
+          treemacs-eldoc-display                   'simple
+          treemacs-file-event-delay                2000
+          treemacs-file-extension-regex            treemacs-last-period-regex-value
+          treemacs-file-follow-delay               0.2
+          treemacs-file-name-transformer           #'identity
+          treemacs-follow-after-init               t
+          treemacs-expand-after-init               t
+          treemacs-find-workspace-method           'find-for-file-or-pick-first
+          treemacs-git-command-pipe                ""
+          treemacs-goto-tag-strategy               'refetch-index
+          treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+          treemacs-hide-dot-git-directory          t
+          treemacs-indentation                     2
+          treemacs-indentation-string              " "
+          treemacs-is-never-other-window           nil
+          treemacs-max-git-entries                 5000
+          treemacs-missing-project-action          'ask
+          treemacs-move-files-by-mouse-dragging    t
+          treemacs-move-forward-on-expand          nil
+          treemacs-no-png-images                   nil
+          treemacs-no-delete-other-windows         t
+	  treemacs-project-follow-cleanup          nil
+          treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                        'left
+          treemacs-read-string-input               'from-child-frame
+          treemacs-recenter-distance               0.1
+          treemacs-recenter-after-file-follow      nil
+          treemacs-recenter-after-tag-follow       nil
+          treemacs-recenter-after-project-jump     'always
+          treemacs-recenter-after-project-expand   'on-distance
+          treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+          treemacs-project-follow-into-home        nil
+          treemacs-show-cursor                     nil
+          treemacs-show-hidden-files               t
+          treemacs-silent-filewatch                nil
+          treemacs-silent-refresh                  nil
+          treemacs-sorting                         'alphabetic-asc
+          treemacs-select-when-already-in-treemacs 'move-back
+          treemacs-space-between-root-nodes        t
+          treemacs-tag-follow-cleanup              t
+          treemacs-tag-follow-delay                1.5
+          treemacs-text-scale                      nil
+          treemacs-user-mode-line-format           nil
+          treemacs-user-header-line-format         nil
+          treemacs-wide-toggle-width               70
+          treemacs-width                           35
+          treemacs-width-increment                 1
+          treemacs-width-is-initially-locked       t
+          treemacs-workspace-switch-cleanup        nil)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (when treemacs-python-executable
+      (treemacs-git-commit-diff-mode t))
+
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple)))
+
+    (treemacs-hide-gitignored-files-mode nil))
+  ;; xah-fly-keys keybindings
+  (define-key xah-fly-command-map (kbd "SPC t 0") 'treemacs-select-window)
+  (define-key xah-fly-command-map (kbd "SPC t 1") 'treemacs-delete-other-windows)
+  (define-key xah-fly-command-map (kbd "SPC t t") 'treemacs)
+  (define-key xah-fly-command-map (kbd "SPC t d") 'treemacs-select-directory)
+  (define-key xah-fly-command-map (kbd "SPC t B") 'treemacs-bookmark)
+  )
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  :after (treemacs)
+  :ensure t
+  :config (treemacs-set-scope-type 'Tabs))
+
+(treemacs-start-on-boot)
+
 (use-package which-key
   :ensure t
   :config
   (which-key-setup-side-window-right-bottom)
   ;;(which-key-setup-side-window-bottom)
-  (which-key-mode 1))
+  (which-key-mode 1)
+  (add-hook 'c-mode-hook 'lsp)
+  (add-hook 'c++-mode-hook 'lsp))
 
 (use-package xah-fly-keys
   :ensure t
@@ -251,11 +432,29 @@ e.g. (kbd \"TAB\") or (kbd \"<f9>\") or (kbd \"C-c\")")
 ;; random workspace related keybinds
 (define-key xah-fly-command-map (kbd "SPC w j") 'xref-find-references)
 
+;; flymake
+(define-key xah-fly-command-map (kbd "SPC F n") 'flymake-goto-next-error)
+(define-key xah-fly-command-map (kbd "SPC F p") 'flymake-goto-prev-error)
+(define-key xah-fly-command-map (kbd "SPC F b") 'flymake-show-buffer-diagnostics)
+(define-key xah-fly-command-map (kbd "SPC F d") 'flymake-show-project-diagnostics)
+
+;; helm -- remap find-file in xah-fly-keys to helm-find-file as well
+(define-key xah-fly-command-map (kbd "SPC i e") 'helm-find-files)
+  )
+
+(use-package winum
+  :ensure t
+  :config
+  (winum-mode 1))
+
 (use-package yasnippet
+  :after dap-cpptools
   :ensure t
   :init
   (use-package yasnippet-snippets
     :ensure t)
+  :config
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (yas-global-mode 1))
 
 ;; Emacs customization
@@ -293,9 +492,13 @@ e.g. (kbd \"TAB\") or (kbd \"<f9>\") or (kbd \"C-c\")")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(catppuccin-theme company doom-modeline doom-themes markdown-mode
-		      rainbow-delimiters which-key yasnippet
-		      yasnippet-snippets)))
+   '(avy bug-hunter catppuccin-theme company dap-cpptools dap-mode
+	 doom-modeline doom-themes gnu-elpa-keyring-update helm
+	 helm-lsp helm-xref lsp-mode lsp-treemacs magit markdown-mode
+	 projectile projectile-ripgrep rainbow-delimiters
+	 treemacs-evil treemacs-icons-dired treemacs-magit
+	 treemacs-persp treemacs-projectile treemacs-tab-bar which-key
+	 winum xah-fly-keys yasnippet yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

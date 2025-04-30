@@ -68,6 +68,7 @@ PATH="$PATH:$HOME/x-tools/i686-unknown-elf/bin"
 export PATH
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export GTK_THEME="Nordic-darker-v40"
 
 export PICO_SDK_PATH="$HOME/.pico-sdk"
 

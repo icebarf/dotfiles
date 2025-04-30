@@ -1,7 +1,7 @@
 #!/bin/sh
 
 FILE="/sys/class/backlight/*/brightness"
-MAX_BRIGHTNESS=1515
+MAX_BRIGHTNESS=100
 
 BRIGHT=$(($1 * MAX_BRIGHTNESS))
 BRIGHT=$((BRIGHT / 100))
