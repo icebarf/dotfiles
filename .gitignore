@@ -13,6 +13,7 @@
 /.local/*
 !/.local/share
 /.local/share/*
+!/.local/share/fonts
 !/.local/share/kiss
 /.local/share/kiss/*
 !/.local/share/kiss/linux
