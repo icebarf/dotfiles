@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $HOME/AUR/texthooker-ui
+pnpm run preview

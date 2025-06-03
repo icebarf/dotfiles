@@ -59,8 +59,8 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 # other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
-export LANG=en_US.UTF-8
-#export LANG=ja_JP.UTF-8
+#export LANG=en_US.UTF-8
+export LANG=ja_JP.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
 PATH="$PATH:$HOME/.local/bin"
 PATH="$PATH:$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin"

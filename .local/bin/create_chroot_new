@@ -1,3 +1,3 @@
-!#/bin/sh
-rm -rf $CHROOT/*
+#!/bin/sh
+$SU_PROG rm -rf $CHROOT/*
 mkarchroot $CHROOT/root base-devel

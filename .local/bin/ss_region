@@ -1,7 +1,14 @@
 #!/bin/sh
 
-OUT="$XDG_PICTURES_DIR/Screenshots/$(date +'Screenshot_%Y%m%d_%H%M%S.png')"
+OUT="$XDG_PICTURES_DIR/Screenshots/Screenshot From $(date '+%F %H-%M-%S.png')"
+SCREENSHOT_TOOL="gnome-screenshot"
+CLIPBOARD_COPY="wl-copy"
 
-grim -l 1 -g "$(slurp)" "$OUT"
+if [[ -n $1 ]]; then
+  OUT="$1"
+fi
 
-wl-copy -t image/png < "$OUT"
+$SCREENSHOT_TOOL -c -f "$OUT" -a
+
+#grim -l 1 -g "$(slurp)" "$OUT"
+#wl-copy -t image/png < "$OUT"

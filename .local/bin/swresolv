@@ -1,0 +1,9 @@
+#!/bin/sh
+
+BAK="/etc/resolv.conf.bak"
+RESOLV="/etc/resolv.conf"
+TMP="/etc/resolv.conf.tmp"
+sudo cp -v $RESOLV $TMP
+sudo cp -v $BAK $RESOLV
+sudo cp -v $TMP $BAK 
+sudo rm $TMP
