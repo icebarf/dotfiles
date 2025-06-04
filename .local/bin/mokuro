@@ -1,1 +1,2 @@
-/home/ice/.local/share/pipx/venvs/mokuro/bin/mokuro
+#!/bin/sh
+source ~/.local/share/venvs/python39/bin/activate && ~/.local/share/venvs/python39/bin/mokuro "$@"
