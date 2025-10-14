@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function gpu-switch() {
+    if lspci -nk | grep -q "Kernel driver in use: nvidia"; then
+        sudo rmmod nvidia_modeset nvidia_uvm nvidia_drm nvidia &> /dev/null
+        echo "dGPU found... detaching..."
+        echo "NVIDIA Drivers removed!"
+        sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 &> /dev/null
+        echo "VFIO Drivers added!"
+        sudo virsh nodedev-detach pci_0000_01_00_0 &> /dev/null
+        sudo virsh nodedev-detach pci_0000_01_00_1 &> /dev/null
+        echo "dGPU detached!"
+        echo "dGPU is now VFIO ready!"
+    else
+        sudo virsh nodedev-reattach pci_0000_01_00_0 &> /dev/null
+        sudo virsh nodedev-reattach pci_0000_01_00_1 &> /dev/null
+        echo "dGPU not found... attaching..."
+        echo "dGPU Attached!"
+        sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 &> /dev/null
+        echo "VFIO Drivers removed!"
+        sudo modprobe -i nvidia_modeset nvidia_uvm nvidia_drm nvidia &> /dev/null
+        echo "NVIDIA Drivers added!"
+        echo "dGPU is now host ready!"
+    fi
+}
+
+gpu-switch

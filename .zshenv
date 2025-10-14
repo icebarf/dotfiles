@@ -59,12 +59,12 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 # other envvars
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
-#export LANG=en_US.UTF-8
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
+#export LANG=ja_JP.UTF-8
 #export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/Screenshots"
-PATH="$PATH:$HOME/.local/bin"
-PATH="$PATH:$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin"
-PATH="$PATH:$HOME/x-tools/i686-unknown-elf/bin"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin:$PATH"
+PATH="$HOME/x-tools/i686-unknown-elf/bin:$PATH"
 export PATH
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -86,3 +86,4 @@ export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
 xset r rate 250 50
 #set -o emacs
 
+. "/home/ice/.local/share/cargo/env"

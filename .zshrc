@@ -41,6 +41,8 @@ fi
 
 # Aliases
 
+alias agent-steins='WINEFSYNC=1 WINEPREFIX="/home/ice/.local/share/Steam/steamapps/compatdata/412830/pfx" /home/ice/.steam/steam/compatibilitytools.d/GE-Proton10-4/files/bin/wine Programs/agent-windows/agent.exe'
+
 alias remacs="pkill emacs && /usr/bin/emacs --daemon &"
 
 #continue download
@@ -64,6 +66,8 @@ alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 
 #fixes
 alias fix-permissions="$SU_PROG chown -R $USER:$USER ~/.config ~/.local"
+
+alias vim='nvim'
 
 make_kindle_wall ()
 {
@@ -123,3 +127,5 @@ alias rmgitcache="rm -r ~/.cache/git"
 alias fan_control='$SU_PROG $EDITOR \
 		/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy'
 alias swayconfig="$EDITOR $XDG_CONFIG_HOME/sway/config"
+
+eval "$(zoxide init zsh)"
