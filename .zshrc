@@ -19,7 +19,7 @@ else
 fi
 
 export SU_PROG="sudo"
-export EDITOR="vim"
+export EDITOR="nvim"
 #export VISUAL="emacsc"
 
 # syntax highlighting
