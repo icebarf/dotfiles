@@ -25,4 +25,6 @@ source $HOME/.zshenv
 #exec tlp init start &
 #exec emacs --daemon &
 #exec sway
+
+sudo tailscale up
 exec sudo ydotoold &
