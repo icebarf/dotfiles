@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/vesktop -ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --disable-features=WebRtcAllowDMA,WebRtcDmabufVideoCapture,WaylandSurfaceSubmissionInPixelCoordinates "$@"
+/usr/bin/vesktop -ozone-platform=wayland --enable-features=UseOzonePlatform"$@"
