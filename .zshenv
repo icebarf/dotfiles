@@ -81,6 +81,9 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS="@im=ibus"
 export GLFW_IM_MODULE=ibus
 
+## NEXTCLOUD
+export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini
+
 # ibus specific
 export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
 xset r rate 250 50

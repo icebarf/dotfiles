@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sudo docker run \
+  --init \
+  --sig-proxy=false \
+  --name nextcloud-aio-mastercontainer \
+  --env APACHE_PORT=11000 \
+  --env APACHE_IP_BINDING=0.0.0.0 \
+  --env APACHE_ADDITIONAL_NETWORK="" \
+  --env SKIP_DOMAIN_VALIDATION=true \
+  --env NEXTCLOUD_DATADIR="/home/ice/FileSystem/NextCloudData" \
+  --env NEXTCLOUD_MOUNT="/home/ice/FileSystem/" \
+  --env NEXTCLOUD_ENABLE_DRI_DEVICE=true \
+  --env NEXTCLOUD_MEMORY_LIMIT=2048M \
+  --env FULLTEXTSEARCH_JAVA_OPTIONS="-Xms1024M -Xmx1024M" \
+  --restart always \
+  --publish 8080:8080 \
+  --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
+  --volume /var/run/docker.sock:/var/run/docker.sock:ro \
+  ghcr.io/nextcloud-releases/all-in-one:latest
