@@ -1,0 +1,29 @@
+#!/bin/sh
+
+status_code_jelly="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://jellyfin.home.rdseed.in)"
+status_code_party="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://party.home.rdseed.in)"
+status_code_pubdir="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://pubdir.home.rdseed.in)"
+status_code_seer="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://seer.home.rdseed.in)"
+
+echo "jellyfin" $status_code_jelly
+echo "party" $status_code_party
+echo "pubdir" $status_code_pubdir
+echo "seer" $status_code_seer
+
+if [ $status_code_jelly != "200" ] && [[ $status_code_jelly != "302" ]]; then
+    echo "jellyfin"
+    sudo systemctl restart boringproxy-client
+    exit
+elif [ $status_code_party != "200" ]; then
+    echo "party"
+    sudo systemctl restart boringproxy-client
+    exit
+elif [ $status_code_pubdir != "200" ]; then
+    echo "pubdir"
+    sudo systemctl restart boringproxy-client
+    exit
+elif [ $status_code_seer != "200" ] && [ $status_code_seer != "307" ]; then
+    echo "seer"
+    sudo systemctl restart boringproxy-client
+    exit
+fi
