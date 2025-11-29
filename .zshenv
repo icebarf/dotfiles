@@ -65,7 +65,6 @@ export LANG=en_US.UTF-8
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/x-tools/arm-kindlepw2-linux-gnueabi/bin:$PATH"
 PATH="$HOME/x-tools/i686-unknown-elf/bin:$PATH"
-export PATH
 #export MOZ_WAYLAND_DRM_DEVICE=/dev/dri/renderD128
 #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export GTK_THEME="Nordic-darker-v40"
@@ -89,4 +88,7 @@ export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
 xset r rate 250 50
 #set -o emacs
 
+export NVIM_CONFIG="$XDG_CONFIG_HOME/nvim"
+
 . "/home/ice/.local/share/cargo/env"
+export PATH
