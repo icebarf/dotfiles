@@ -491,14 +491,7 @@ e.g. (kbd \"TAB\") or (kbd \"<f9>\") or (kbd \"C-c\")")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(avy bug-hunter catppuccin-theme company dap-cpptools dap-mode
-	 doom-modeline doom-themes gnu-elpa-keyring-update helm
-	 helm-lsp helm-xref lsp-mode lsp-treemacs magit markdown-mode
-	 projectile projectile-ripgrep rainbow-delimiters
-	 treemacs-evil treemacs-icons-dired treemacs-magit
-	 treemacs-persp treemacs-projectile treemacs-tab-bar which-key
-	 winum xah-fly-keys yasnippet yasnippet-snippets)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
