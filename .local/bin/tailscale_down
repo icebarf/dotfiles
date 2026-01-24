@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo tailscale down
+sudo systemctl stop tailscaled.service

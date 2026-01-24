@@ -26,5 +26,5 @@ source $HOME/.zshenv
 #exec emacs --daemon &
 #exec sway
 
-sudo tailscale up
+#sudo tailscale up
 exec sudo ydotoold &
