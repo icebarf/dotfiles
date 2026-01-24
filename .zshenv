@@ -75,16 +75,16 @@ export PICO_SDK_PATH="$HOME/.pico-sdk"
 export CHROOT="$HOME/AUR/chroot"
 
 # Japanese localisation
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS="@im=ibus"
-export GLFW_IM_MODULE=ibus
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export GLFW_IM_MODULE=fcitx
 
 ## NEXTCLOUD
 export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini
 
 # ibus specific
-export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
+#export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
 xset r rate 250 50
 #set -o emacs
 

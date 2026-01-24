@@ -1,29 +1,45 @@
 #!/bin/sh
 
-status_code_jelly="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://jellyfin.home.rdseed.in)"
-status_code_party="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://party.home.rdseed.in)"
-status_code_pubdir="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://pubdir.home.rdseed.in)"
-status_code_seer="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://seer.home.rdseed.in)"
+status_code_jelly="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://jellyfin.rdseed.in)"
+status_code_matrix="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://matrix.rdseed.in)"
+status_code_party="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://party.rdseed.in)"
+#status_code_pubdir="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://pubdir.rdseed.in)"
+status_code_seer="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://seer.rdseed.in)"
 
+echo "invidious" $status_code_invidious
 echo "jellyfin" $status_code_jelly
+echo "matrix" $status_code_matrix
 echo "party" $status_code_party
+echo "piped" $status_code_piped
 echo "pubdir" $status_code_pubdir
 echo "seer" $status_code_seer
 
 if [ $status_code_jelly != "200" ] && [[ $status_code_jelly != "302" ]]; then
     echo "jellyfin"
     sudo systemctl restart boringproxy-client
+    if [ $(sudo systemctl is-active jellyfin.service) != "active" ]; then
+      sudo systemctl restart jellyfin.service
+    fi
     exit
 elif [ $status_code_party != "200" ]; then
     echo "party"
     sudo systemctl restart boringproxy-client
+    if [ $(sudo systemctl is-active copyparty@ice.service) != "active" ]; then
+      sudo systemctl restart copyparty@ice.service
+    fi
     exit
-elif [ $status_code_pubdir != "200" ]; then
+elif [ $status_code_matrix != "200" ]; then
     echo "pubdir"
     sudo systemctl restart boringproxy-client
+    if [ $(sudo systemctl is-active tuwunel.service) != "active" ]; then
+      sudo systemctl restart tuwunel.service
+    fi
     exit
 elif [ $status_code_seer != "200" ] && [ $status_code_seer != "307" ]; then
     echo "seer"
     sudo systemctl restart boringproxy-client
+    if [ $(sudo systemctl is-active jellyseerr.service) != "active" ]; then
+      sudo systemctl restart jellyseerr.service
+    fi
     exit
 fi
