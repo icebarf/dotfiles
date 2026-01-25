@@ -1,3 +1,4 @@
 #!/bin/sh
+mkdir --parents $CHROOT
 $SU_PROG rm -rf $CHROOT/*
 mkarchroot $CHROOT/root base-devel
