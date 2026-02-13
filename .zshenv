@@ -40,6 +40,8 @@ export MAKEFLAGS="-j12"
 #	fi
 #fi
 
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib:/usr/lib:/usr/local/lib"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
