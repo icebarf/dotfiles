@@ -1,11 +1,11 @@
 # generated with dotmg, see `man 1 dotmg` or https://github.com/icebarf/dotmg
+*.uuid*
 /*
 !/.config
 /.config/*
 !/.config/foot
 !/.config/sway
 !/.config/pipewire
-!/.config/gtk-3.0
 !/.zprofile
 !/.zshenv
 !/.zshrc
@@ -30,3 +30,10 @@
 !/.config/emacs/init.el
 !/.config/emacs/lisp
 !/.config/nvim
+!/.config/gtk-3.0
+/.config/gtk-3.0/*
+!/.config/gtk-3.0/bookmarks
+!/.config/gtk-3.0/colors.css
+!/.config/gtk-3.0/gtk.css
+!/.config/gtk-3.0/settings.ini
+!/.config/gtk-3.0/window_decorations.css
