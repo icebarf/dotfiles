@@ -1,4 +1,5 @@
 #. "/etc/zprofile"
+export HELLO="hello"
 
 #REPODIR="$HOME/.local/share/kiss/repos"
 #export KISS_PATH=""
@@ -87,7 +88,7 @@ export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini
 
 # ibus specific
 #export MOZC_IBUS_CANDIDATE_WINDOW="ibus"
-xset r rate 250 50
+#xset r rate 250 50
 #set -o emacs
 
 export NVIM_CONFIG="$XDG_CONFIG_HOME/nvim"

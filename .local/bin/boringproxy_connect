@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$HOME/.local/bin/boringproxy client -server home.rdseed.in:9001 -token D5zJI60jjCdH0BTM5nFfknP99uI2K8iV -client-name icepad
+/home/ice/.local/bin/boringproxy client -server home.rdseed.in -token 9ZjutdRQ4BmM85LlCAPmH2nrWvIpYPHC -client-name icepad
