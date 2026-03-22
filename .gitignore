@@ -24,6 +24,7 @@
 !/.local/share/kiss/linux/config_thinkpad_t480
 !/.local/share/kiss/linux/config_tuf_fx505dt
 !/.local/bin
+/.local/bin/koboldcpp
 /.local/bin/Svt*
 !/.config/emacs
 /.config/emacs/*
@@ -37,3 +38,4 @@
 !/.config/gtk-3.0/gtk.css
 !/.config/gtk-3.0/settings.ini
 !/.config/gtk-3.0/window_decorations.css
+!/.config/kitty

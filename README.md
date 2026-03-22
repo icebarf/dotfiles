@@ -21,3 +21,5 @@ If for some reason the server refuses to launch, consider upgrading the venv
 $ source <localaudio vevn>/bin/activate
 $ python3 -m venv --upgrade <localaudio venv path>
 ```
+
+>>> RTL-SDR-compatible DVB stick cannot be used for both DVB and SDR at once (driver conflict). This package provides /usr/lib/modprobe.d/rtlsdr.conf to blacklist the DVB drivers.

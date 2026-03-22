@@ -42,6 +42,7 @@ export MAKEFLAGS="-j12"
 #fi
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib:/usr/lib:/usr/local/lib"
+export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python3.14/site-packages"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

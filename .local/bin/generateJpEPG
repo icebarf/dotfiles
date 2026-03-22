@@ -1,3 +1,6 @@
 #!/bin/sh
 cd /home/ice/AUR/epg
-npm run grab -- --site=tvguide.myjcom.jp --maxConnections=20
+npm run grab -- --site=tvguide.myjcom.jp --maxConnections=20 --output=guide-myjcom.jp.xml
+npm run grab -- --site=www3.nhk.or.jp --maxConnections=20 --output=guide-nhk.or.jp.xml
+npm run grab -- --site=s.mxtv.jp --maxConnections=20 --output=guide-mxtv.jp.xml
+npm run grab -- --site=skyperfectv.co.jp --maxConnections=20 --output=guide-skyperfectv.co.jp.xml
