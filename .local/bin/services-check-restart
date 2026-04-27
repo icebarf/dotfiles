@@ -3,13 +3,11 @@
 status_code_jelly="$(curl -o /dev/null --connect-timeout 48 --silent --head --write-out '%{http_code}\n' https://jellyfin.rdseed.in)"
 status_code_matrix="$(curl -o /dev/null --connect-timeout 48 --silent --head --write-out '%{http_code}\n' https://matrix.rdseed.in)"
 status_code_party="$(curl -o /dev/null --connect-timeout 48 --silent --head --write-out '%{http_code}\n' https://party.rdseed.in)"
-#status_code_pubdir="$(curl -o /dev/null --connect-timeout 10 --silent --head --write-out '%{http_code}\n' https://pubdir.rdseed.in)"
 status_code_seer="$(curl -o /dev/null --connect-timeout 48 --silent --head --write-out '%{http_code}\n' https://seer.rdseed.in)"
 
 echo "jellyfin" $status_code_jelly
 echo "matrix" $status_code_matrix
 echo "party" $status_code_party
-#echo "pubdir" $status_code_pubdir
 echo "seer" $status_code_seer
 
 if [ $status_code_jelly != "200" ] && [[ $status_code_jelly != "302" ]]; then
@@ -37,4 +35,4 @@ elif [ $status_code_seer != "200" ] && [ $status_code_seer != "307" ]; then
     fi
     exit
 fi
-sudo systemctl restart boringproxy-client
+

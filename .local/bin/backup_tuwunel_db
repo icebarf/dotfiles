@@ -1,0 +1,14 @@
+#!/bin/bash
+
+BACKUP_WRITE_LOCATION="/mnt/FileSystem/Backups/Tuwunel/"
+SOURCE_LOCATION="/mnt/FileSystem/"
+
+if [[ ! -w "$BACKUP_WRITE_LOCATION" ]]; then
+  printf "%s\n" "Cannot access external backup location"
+  printf "Location: %s\n" "$BACKUP_WRITE_LOCATION"
+  exit
+fi
+
+sudo systemctl stop tuwunel.service
+rsync -av --delete /mnt/Tuwunel/ /mnt/FileSystem/Backups/Tuwunel/
+sudo systemctl start tuwunel.service
